@@ -1,4 +1,6 @@
 #pragma once
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <SFML/Graphics.hpp>
 #include <windows.h>
 
@@ -13,8 +15,9 @@ const float FULL_CRL_DEGREES = 360;
 const int CRL_QUARTER = 90;
 const int SEC_HAND_POS = 60;
 const int HOUR_HAND_POS = 12;
-const float PI = 3.14;
-const float CHARACTER_SIZE = 20;
+const unsigned int CHARACTER_SIZE = 20;
+const float RANGE_FROM__CLOCK_BORDER =10;
+const int ANTIALIASING = 8;
 
 
 struct Clock
@@ -26,6 +29,8 @@ struct Clock
 	void initCircles();
 	void initNumbers();
 	void draw(sf::RenderWindow& window);
+
+	sf::Vector2f textPositionOnClock(float angle);
 
 	sf::Vector2u clock_position;
 	float second_angle;
@@ -42,5 +47,5 @@ struct Clock
 	sf::Font font;
 	sf::Text text[HOUR_HAND_POS];
 
-	SYSTEMTIME t;
+	SYSTEMTIME time;
 };

@@ -2,10 +2,10 @@
 #include <iostream>
 
 
-Application::Application() : window(sf::VideoMode(240,240), "Clock", sf::Style::Close)
-, clock(window)
+Application::Application() 
+:window(sf::VideoMode(240,240), "Clock", sf::Style::Close, sf::ContextSettings(0,0, ANTIALIASING))
+,clock(window)
 {
-	window.setVerticalSyncEnabled(true);
 }
 void Application::run()
 {
